@@ -18,3 +18,10 @@ Install as follows:
 ```
 dpkg -x UG4-0.1.1-Linux.deb <DESTDIR>
 ```
+
+Adjust rpath
+```
+cd <DESTDIR>/bin
+patchelf --set-rpath '../lib' ugshell
+```
+
