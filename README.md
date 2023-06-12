@@ -1,4 +1,10 @@
 
+## Docker image
+```
+docker build .
+docker buildx build -f docker-standalone/Dockerfile --platform linux/amd64,linux/arm64 . 
+```
+
 ## Creating packages
 Create package and checksum file as follows:
 ```
@@ -7,7 +13,6 @@ cpack -G DEB --verbose
 
 
 ## Publish pa
-
 
 ## Local install
 
