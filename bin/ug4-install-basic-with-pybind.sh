@@ -1,20 +1,19 @@
 #!/bin/bash
-DEST = $HOME
-mkdir $DEST/opt
-cd $DEST/opt
+mkdir $1
+cd $1
 git clone https://github.com/UG4/ughub
 
-export UG4_ROOT=$HOME/opt/ug4
+export UG4_ROOT=$1/ug4
 echo "Found ug4: $UG4_ROOT"
 
 # UG4
 mkdir $UG4_ROOT
 cd $UG4_ROOT
 ../ughub/ughub init
-../ughub/ughub install Examples
+../ughub/ughub install ConvectionDiffusion
 ../ughub/ughub install Limex
 ../ughub/ughub install SuperLU6
-../ughub/ughub git checkout v23.6.0
+# ../ughub/ughub git checkout v23.6.0
 
 # Fetch Pybind
 cd $UG4_ROOT
@@ -42,7 +41,7 @@ cd $UG4_ROOT
 mkdir build
 cd build
 cmake -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_BUILD_TYPE=Release ..
+cmake -DUSE_PYBIND11=ON -DCMAKE_POLICY_DEFAULT_CMP0057=NEW ..
 cmake -DDIM="2;3" -DCPU=1 -DPARALLEL=OFF ..
 cmake -DLimex=ON -DConvectionDiffusion=ON -DSuperLU6=ON ..
-cmake -DUSE_PYBIND11=ON -DCMAKE_POLICY_DEFAULT_CMP0057=NEW ..
 make 
