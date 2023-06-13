@@ -1,8 +1,8 @@
 
 ## Docker image
 ```
-docker build .
-docker buildx build -f docker-standalone/Dockerfile --platform linux/amd64,linux/arm64 . 
+docker build . 
+docker buildx build . --platform linux/amd64
 ```
 
 ## Creating packages
