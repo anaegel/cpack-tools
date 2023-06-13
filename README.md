@@ -2,7 +2,7 @@
 ## Docker image
 ```
 docker build . 
-docker buildx build . --platform linux/amd64
+docker buildx build --platform linux/amd64 -o type=docker .
 ```
 
 ## Creating packages
