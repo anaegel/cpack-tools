@@ -2,7 +2,7 @@
 ## Docker image
 ```
 docker build . 
-docker buildx build --platform linux/amd64 -o type=docker .
+docker buildx build --platform linux/arm64 -o type=docker -t cpack-tools-arm64 .
 ```
 
 ## Creating packages
